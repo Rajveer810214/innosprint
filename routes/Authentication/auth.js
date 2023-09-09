@@ -75,13 +75,13 @@ router.post('/login', body('password', 'password should have a minimum length of
     }
     if (student.isVerified === true) {
       const authToken = jwt.sign(data, JWT_Token);
+      console.log(authToken)
       return res.status(200).json({ success: true, authtoken: authToken });
     }
     else {
       return res.status(200).json({ success: false, message: "Please verify your account" });
     }
   }
-  return res.status(400).json({ success: false, message: "Please try to login with the correct credentials" });
 });
 
 module.exports = router;
