@@ -2,11 +2,16 @@
 const express = require('express');
 const cors = require('cors');
 const connectToMongo = require('./db');
+const bodyParser = require('body-parser');
 const app = express();
 app.use(cors());
 // Connect to MongoDB
 connectToMongo();
 // Route Handlers
+
+//Increase the JSON request size limit (e.g., 10MB)
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 
 //User Routes
 const authRoute = require('./routes/Authentication/auth');

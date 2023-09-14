@@ -4,7 +4,7 @@ const fetchuser=(req,res,next)=>{
     const token=req.header('auth-token')
 
     if(!token){
-       return res.status(400).json("Please try to enter the correct token")
+       return res.status(400).json("Missing  token")
     }
     try {
         console.log(token);
