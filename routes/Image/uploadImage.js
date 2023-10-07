@@ -65,26 +65,13 @@ router.post('/checkimage', multerConfig.single('image'), fetchuser, async (req, 
     // Handle the response from the Flask API
     console.log('API Response:', response.data);
 
-    res.status(200).json({ success: true, message: 'Files uploaded and recognized successfully.' });
+    res.status(200).json({ success: true, message: response.data });
   } catch (error) {
     console.error('Error occurred while processing the images:', error);
     return res.status(500).json({ error: 'Internal server error occurred' });
   }
 });
 
-// router.post('/upload', fetchuser, async (req, res) => {
-//    const imageBuffer = req.body.buffer //req.file.buffer; // Get the image buffer data from req.file.buffer
-//    try {
-//      const story = await image.create({
-//        image: imageBuffer, // Save the image buffer in the database
-//        user: req.student.id,
-//      });
-//      res.status(200).json({ success: true, message: 'File uploaded successfully.' });
-//    } catch (error) {
-//      console.error('Error occurred while processing the image:', error);
-//      return res.status(500).json({ error: 'Internal server error occurred' });
-//    }
-//  });
 router.get('/getimage', fetchuser, async (req, res) => {
   try {
     const userId = req.student.id;

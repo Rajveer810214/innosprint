@@ -19,6 +19,8 @@ const userRoute = require('./routes/getUser');
 const validateRoute = require('./routes/Authentication/verify');
 const passwordResetRoute = require('./routes/password/resetPassword');
 const imageUpload = require('./routes/Image/uploadImage');
+const screen = require('./routes/screensharing');
+
 // Assigning the route handlers to specific paths
 //user side
 app.use('/api/auth', authRoute);
@@ -26,6 +28,8 @@ app.use('/api/users', userRoute);
 app.use('/api/validate', validateRoute);
 app.use('/api/password', passwordResetRoute);
 app.use('/api/image', imageUpload);
+app.use('/api/screen', screen);
+
 
 // Start the server
 const port = process.env.PORT;
